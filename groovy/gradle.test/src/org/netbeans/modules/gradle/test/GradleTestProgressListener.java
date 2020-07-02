@@ -139,7 +139,9 @@ public final class GradleTestProgressListener implements ProgressListener, Gradl
         }
         if ((parent != null) && (parent instanceof JvmTestOperationDescriptor)) {
             Testcase tc = runningTests.get(getTestOpKey((JvmTestOperationDescriptor) parent));
-            tc.addOutputLines(Arrays.asList(desc.getMessage().split("\\R")));
+            if (tc != null) {
+                tc.addOutputLines(Arrays.asList(desc.getMessage().split("\\R")));
+            }
         }
     }
 
